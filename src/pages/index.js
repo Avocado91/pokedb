@@ -2,14 +2,14 @@ import React from "react"
 
 class App extends React.Component {
     state = {
-        pokemonName: "squirtle",
+        pokemonName: undefined,
     }
 
     getPokemon = async (e) => {
         e.preventDefault()
         e.persist()
 
-        const pokemon = "charmander"
+        const pokemon = e.target.elements.pokemonName.value
 
         const apiCall = await fetch(
             `https://pokeapi.co/api/v2/pokemon/${pokemon}`
@@ -27,7 +27,10 @@ class App extends React.Component {
         return (
             <div>
                 <h1>Pokemon</h1>
-                <button onClick={this.getPokemon}>Get Pokemon</button>
+                <form onSubmit={this.getPokemon}>
+                    <input type="text" name="pokemonName" />
+                    <button>Get Pokemon</button>
+                </form>
                 <p>{this.state.pokemonName}</p>
             </div>
         )
