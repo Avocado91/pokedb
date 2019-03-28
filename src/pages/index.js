@@ -3,6 +3,9 @@ import React from "react"
 class App extends React.Component {
     state = {
         pokemonName: undefined,
+        pokemonId: undefined,
+        pokemonSpriteUrl: undefined,
+        pokemonTypes: [],
     }
 
     getPokemon = async (e) => {
@@ -18,6 +21,9 @@ class App extends React.Component {
 
         this.setState({
             pokemonName: response.name,
+            pokemonId: response.id,
+            pokemonSpriteUrl: response.sprites.front_default,
+            pokemonTypes: response.types,
         })
 
         console.log(response)
@@ -32,6 +38,14 @@ class App extends React.Component {
                     <button>Get Pokemon</button>
                 </form>
                 <p>{this.state.pokemonName}</p>
+                <p>{this.state.pokemonId}</p>
+                <img
+                    src={this.state.pokemonSpriteUrl}
+                    alt={this.state.pokemonName}
+                />
+                {this.state.pokemonTypes.map((i) => {
+                    return <p key={i.slot}>{i.type.name}</p>
+                })}
             </div>
         )
     }
