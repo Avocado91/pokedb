@@ -11,6 +11,11 @@ class App extends React.Component {
             height: undefined,
             weight: undefined,
         },
+        evolutionChain: {
+            firstPoke: undefined,
+            secondPoke: undefined,
+            thirdPoke: undefined,
+        },
     }
 
     getData = (e) => {
@@ -36,9 +41,47 @@ class App extends React.Component {
             }
         }
 
-        this.setState({
-            pokemonDescription: englishEntry,
-        })
+        const evolutionChainUrl = response.evolution_chain.url
+        const evolutionApiCall = await fetch(evolutionChainUrl)
+        const evolutionResponse = await evolutionApiCall.json()
+
+        console.log(evolutionResponse)
+
+        if (evolutionResponse.chain.evolves_to.length < 1) {
+            this.setState({
+                pokemonDescription: englishEntry,
+                evolutionChain: {
+                    firstPoke: evolutionResponse.chain.species.name,
+                    secondPoke: undefined,
+                    thirdPoke: undefined,
+                },
+            })
+        } else if (
+            evolutionResponse.chain.evolves_to[0].evolves_to.length < 1
+        ) {
+            this.setState({
+                pokemonDescription: englishEntry,
+                evolutionChain: {
+                    firstPoke: evolutionResponse.chain.species.name,
+                    secondPoke:
+                        evolutionResponse.chain.evolves_to[0].species.name,
+                    thirdPoke: undefined,
+                },
+            })
+        } else {
+            this.setState({
+                pokemonDescription: englishEntry,
+                evolutionChain: {
+                    firstPoke: evolutionResponse.chain.species.name,
+                    secondPoke:
+                        evolutionResponse.chain.evolves_to[0].species.name,
+                    thirdPoke:
+                        evolutionResponse.chain.evolves_to[0].evolves_to[0]
+                            .species.name,
+                },
+            })
+        }
+
         console.log(response)
     }
 
@@ -85,6 +128,18 @@ class App extends React.Component {
                 <p>Pokemon Stats</p>
                 <p>Height: {this.state.pokemonStats.height}</p>
                 <p>Weight: {this.state.pokemonStats.weight}</p>
+                <div>
+                    <h1>Evolutions</h1>
+                    {this.state.evolutionChain.firstPoke && (
+                        <p>first: {this.state.evolutionChain.firstPoke}</p>
+                    )}
+                    {this.state.evolutionChain.secondPoke && (
+                        <p>second: {this.state.evolutionChain.secondPoke}</p>
+                    )}
+                    {this.state.evolutionChain.thirdPoke && (
+                        <p>third: {this.state.evolutionChain.thirdPoke}</p>
+                    )}
+                </div>
             </div>
         )
     }
