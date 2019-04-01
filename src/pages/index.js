@@ -7,6 +7,7 @@ class App extends React.Component {
         pokemonDescription: undefined,
         pokemonSprite: undefined,
         pokemonTypes: [],
+        weakTo: [],
         pokemonStats: {
             height: undefined,
             weight: undefined,
@@ -45,22 +46,36 @@ class App extends React.Component {
             }
         }
 
-        console.log(strongestStatName)
-
         this.setState((prevState) => ({
             pokemonName: response.name,
             pokemonId: response.id,
             pokemonSprite: response.sprites.front_default,
             pokemonTypes: response.types,
             pokemonStats: {
-                height: response.height / 10 + "m",
-                weight: Math.round(response.weight / 4.536) + "lbs.",
+                height: response.height / 10 + "m", //converting decimeters to meters
+                weight: Math.round(response.weight / 4.536) + "lbs.", //converting hexagrams to pounds
                 habitat: prevState.pokemonStats.habitat,
                 strongestStat: strongestStatName,
             },
         }))
 
-        console.log(response)
+        let weaknesses = []
+        for (let i = 0; i < response.types.length; i++) {
+            const typesUrl = response.types[i].type.url
+            const typesApiCall = await fetch(typesUrl)
+            const typesResponse = await typesApiCall.json()
+            const weakToData = typesResponse.damage_relations.double_damage_from
+
+            for (let j = 0; j < weakToData.length; j++) {
+                //check for duplicates
+                if (!weaknesses.includes(weakToData[j].name)) {
+                    weaknesses.push(weakToData[j].name)
+                }
+            }
+        }
+        this.setState({
+            weakTo: weaknesses,
+        })
     }
 
     getPokemonSpecies = async (e) => {
@@ -93,8 +108,6 @@ class App extends React.Component {
         const evolutionApiCall = await fetch(evolutionChainUrl)
         const evolutionResponse = await evolutionApiCall.json()
 
-        console.log(evolutionResponse)
-
         if (evolutionResponse.chain.evolves_to.length < 1) {
             this.setState({
                 evolutionChain: {
@@ -126,8 +139,6 @@ class App extends React.Component {
                 },
             })
         }
-
-        console.log(response)
     }
 
     render() {
@@ -145,9 +156,16 @@ class App extends React.Component {
                     alt={this.state.pokemonName}
                 />
                 <p>{this.state.pokemonDescription}</p>
-                {this.state.pokemonTypes.map((i) => {
-                    return <p key={i.slot}>{i.type.name}</p>
-                })}
+                <div>
+                    <h1>Types</h1>
+                    {this.state.pokemonTypes.map((i) => {
+                        return <p key={i.slot}>{i.type.name}</p>
+                    })}
+                    <h1>Weak To</h1>
+                    {this.state.weakTo.map((weakness) => {
+                        return <p>{weakness}</p>
+                    })}
+                </div>
                 <h1>Pokemon Stats</h1>
                 <p>Height: {this.state.pokemonStats.height}</p>
                 <p>Weight: {this.state.pokemonStats.weight}</p>
