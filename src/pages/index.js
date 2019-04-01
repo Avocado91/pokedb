@@ -8,7 +8,7 @@ class App extends React.Component {
         pokemonSprite: undefined,
         pokemonTypes: [],
         pokemonStats: {
-            height: "undefined",
+            height: undefined,
             weight: undefined,
             habitat: undefined,
         },
@@ -24,81 +24,6 @@ class App extends React.Component {
 
         this.getPokemon(e)
         this.getPokemonSpecies(e)
-    }
-
-    getPokemonSpecies = async (e) => {
-        const pokemon = e.target.elements.pokemonName.value
-
-        const apiCall = await fetch(
-            `https://pokeapi.co/api/v2/pokemon-species/${pokemon}`
-        )
-        const response = await apiCall.json()
-
-        let englishEntry = ""
-        for (let i = 0; i < response.flavor_text_entries.length; i++) {
-            if (response.flavor_text_entries[i].language.name === "en") {
-                englishEntry = response.flavor_text_entries[i].flavor_text
-                break
-            }
-        }
-
-        const evolutionChainUrl = response.evolution_chain.url
-        const evolutionApiCall = await fetch(evolutionChainUrl)
-        const evolutionResponse = await evolutionApiCall.json()
-
-        console.log(evolutionResponse)
-
-        if (evolutionResponse.chain.evolves_to.length < 1) {
-            this.setState((prevState) => ({
-                pokemonDescription: englishEntry,
-                pokemonStats: {
-                    height: prevState.pokemonStats.height,
-                    weight: prevState.pokemonStats.weight,
-                    habitat: response.habitat.name,
-                },
-                evolutionChain: {
-                    firstPoke: evolutionResponse.chain.species.name,
-                    secondPoke: undefined,
-                    thirdPoke: undefined,
-                },
-            }))
-        } else if (
-            evolutionResponse.chain.evolves_to[0].evolves_to.length < 1
-        ) {
-            this.setState((prevState) => ({
-                pokemonDescription: englishEntry,
-                pokemonStats: {
-                    height: prevState.pokemonStats.height,
-                    weight: prevState.pokemonStats.weight,
-                    habitat: response.habitat.name,
-                },
-                evolutionChain: {
-                    firstPoke: evolutionResponse.chain.species.name,
-                    secondPoke:
-                        evolutionResponse.chain.evolves_to[0].species.name,
-                    thirdPoke: undefined,
-                },
-            }))
-        } else {
-            this.setState((prevState) => ({
-                pokemonDescription: englishEntry,
-                pokemonStats: {
-                    height: prevState.pokemonStats.height,
-                    weight: prevState.pokemonStats.weight,
-                    habitat: response.habitat.name,
-                },
-                evolutionChain: {
-                    firstPoke: evolutionResponse.chain.species.name,
-                    secondPoke:
-                        evolutionResponse.chain.evolves_to[0].species.name,
-                    thirdPoke:
-                        evolutionResponse.chain.evolves_to[0].evolves_to[0]
-                            .species.name,
-                },
-            }))
-        }
-
-        console.log(response)
     }
 
     getPokemon = async (e) => {
@@ -120,6 +45,72 @@ class App extends React.Component {
                 habitat: prevState.pokemonStats.habitat,
             },
         }))
+
+        console.log(response)
+    }
+
+    getPokemonSpecies = async (e) => {
+        const pokemon = e.target.elements.pokemonName.value
+
+        const apiCall = await fetch(
+            `https://pokeapi.co/api/v2/pokemon-species/${pokemon}`
+        )
+        const response = await apiCall.json()
+
+        let englishEntry = ""
+        for (let i = 0; i < response.flavor_text_entries.length; i++) {
+            if (response.flavor_text_entries[i].language.name === "en") {
+                englishEntry = response.flavor_text_entries[i].flavor_text
+                break
+            }
+        }
+
+        this.setState((prevState) => ({
+            pokemonDescription: englishEntry,
+            pokemonStats: {
+                height: prevState.pokemonStats.height,
+                weight: prevState.pokemonStats.weight,
+                habitat: response.habitat.name,
+            },
+        }))
+
+        const evolutionChainUrl = response.evolution_chain.url
+        const evolutionApiCall = await fetch(evolutionChainUrl)
+        const evolutionResponse = await evolutionApiCall.json()
+
+        console.log(evolutionResponse)
+
+        if (evolutionResponse.chain.evolves_to.length < 1) {
+            this.setState({
+                evolutionChain: {
+                    firstPoke: evolutionResponse.chain.species.name,
+                    secondPoke: undefined,
+                    thirdPoke: undefined,
+                },
+            })
+        } else if (
+            evolutionResponse.chain.evolves_to[0].evolves_to.length < 1
+        ) {
+            this.setState({
+                evolutionChain: {
+                    firstPoke: evolutionResponse.chain.species.name,
+                    secondPoke:
+                        evolutionResponse.chain.evolves_to[0].species.name,
+                    thirdPoke: undefined,
+                },
+            })
+        } else {
+            this.setState({
+                evolutionChain: {
+                    firstPoke: evolutionResponse.chain.species.name,
+                    secondPoke:
+                        evolutionResponse.chain.evolves_to[0].species.name,
+                    thirdPoke:
+                        evolutionResponse.chain.evolves_to[0].evolves_to[0]
+                            .species.name,
+                },
+            })
+        }
 
         console.log(response)
     }
