@@ -8,8 +8,9 @@ class App extends React.Component {
         pokemonSprite: undefined,
         pokemonTypes: [],
         pokemonStats: {
-            height: undefined,
+            height: "undefined",
             weight: undefined,
+            habitat: undefined,
         },
         evolutionChain: {
             firstPoke: undefined,
@@ -21,8 +22,8 @@ class App extends React.Component {
     getData = (e) => {
         e.preventDefault()
 
-        this.getPokemonSpecies(e)
         this.getPokemon(e)
+        this.getPokemonSpecies(e)
     }
 
     getPokemonSpecies = async (e) => {
@@ -48,29 +49,44 @@ class App extends React.Component {
         console.log(evolutionResponse)
 
         if (evolutionResponse.chain.evolves_to.length < 1) {
-            this.setState({
+            this.setState((prevState) => ({
                 pokemonDescription: englishEntry,
+                pokemonStats: {
+                    height: prevState.pokemonStats.height,
+                    weight: prevState.pokemonStats.weight,
+                    habitat: response.habitat.name,
+                },
                 evolutionChain: {
                     firstPoke: evolutionResponse.chain.species.name,
                     secondPoke: undefined,
                     thirdPoke: undefined,
                 },
-            })
+            }))
         } else if (
             evolutionResponse.chain.evolves_to[0].evolves_to.length < 1
         ) {
-            this.setState({
+            this.setState((prevState) => ({
                 pokemonDescription: englishEntry,
+                pokemonStats: {
+                    height: prevState.pokemonStats.height,
+                    weight: prevState.pokemonStats.weight,
+                    habitat: response.habitat.name,
+                },
                 evolutionChain: {
                     firstPoke: evolutionResponse.chain.species.name,
                     secondPoke:
                         evolutionResponse.chain.evolves_to[0].species.name,
                     thirdPoke: undefined,
                 },
-            })
+            }))
         } else {
-            this.setState({
+            this.setState((prevState) => ({
                 pokemonDescription: englishEntry,
+                pokemonStats: {
+                    height: prevState.pokemonStats.height,
+                    weight: prevState.pokemonStats.weight,
+                    habitat: response.habitat.name,
+                },
                 evolutionChain: {
                     firstPoke: evolutionResponse.chain.species.name,
                     secondPoke:
@@ -79,7 +95,7 @@ class App extends React.Component {
                         evolutionResponse.chain.evolves_to[0].evolves_to[0]
                             .species.name,
                 },
-            })
+            }))
         }
 
         console.log(response)
@@ -93,7 +109,7 @@ class App extends React.Component {
         )
         const response = await apiCall.json()
 
-        this.setState({
+        this.setState((prevState) => ({
             pokemonName: response.name,
             pokemonId: response.id,
             pokemonSprite: response.sprites.front_default,
@@ -101,8 +117,9 @@ class App extends React.Component {
             pokemonStats: {
                 height: response.height / 10 + "m",
                 weight: Math.round(response.weight / 4.536) + "lbs.",
+                habitat: prevState.pokemonStats.habitat,
             },
-        })
+        }))
 
         console.log(response)
     }
@@ -125,9 +142,10 @@ class App extends React.Component {
                 {this.state.pokemonTypes.map((i) => {
                     return <p key={i.slot}>{i.type.name}</p>
                 })}
-                <p>Pokemon Stats</p>
+                <h1>Pokemon Stats</h1>
                 <p>Height: {this.state.pokemonStats.height}</p>
                 <p>Weight: {this.state.pokemonStats.weight}</p>
+                <p>Habitat: {this.state.pokemonStats.habitat}</p>
                 <div>
                     <h1>Evolutions</h1>
                     {this.state.evolutionChain.firstPoke && (
