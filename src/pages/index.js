@@ -34,6 +34,19 @@ class App extends React.Component {
         )
         const response = await apiCall.json()
 
+        let highest = 0
+        let strongestStatName = ""
+        const stats = response.stats
+
+        for (let i = 0; i < stats.length; i++) {
+            if (stats[i].base_stat > highest) {
+                highest = stats[i].base_stat
+                strongestStatName = stats[i].stat.name
+            }
+        }
+
+        console.log(strongestStatName)
+
         this.setState((prevState) => ({
             pokemonName: response.name,
             pokemonId: response.id,
@@ -43,6 +56,7 @@ class App extends React.Component {
                 height: response.height / 10 + "m",
                 weight: Math.round(response.weight / 4.536) + "lbs.",
                 habitat: prevState.pokemonStats.habitat,
+                strongestStat: strongestStatName,
             },
         }))
 
@@ -71,6 +85,7 @@ class App extends React.Component {
                 height: prevState.pokemonStats.height,
                 weight: prevState.pokemonStats.weight,
                 habitat: response.habitat.name,
+                strongestStat: prevState.pokemonStats.strongestStat,
             },
         }))
 
@@ -137,6 +152,7 @@ class App extends React.Component {
                 <p>Height: {this.state.pokemonStats.height}</p>
                 <p>Weight: {this.state.pokemonStats.weight}</p>
                 <p>Habitat: {this.state.pokemonStats.habitat}</p>
+                <p>Strongest Stat: {this.state.pokemonStats.strongestStat}</p>
                 <div>
                     <h1>Evolutions</h1>
                     {this.state.evolutionChain.firstPoke && (
