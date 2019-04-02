@@ -64,15 +64,42 @@ class App extends React.Component {
             const typesUrl = response.types[i].type.url
             const typesApiCall = await fetch(typesUrl)
             const typesResponse = await typesApiCall.json()
-            const weakToData = typesResponse.damage_relations.double_damage_from
+            const doubleDmgFromArr =
+                typesResponse.damage_relations.double_damage_from
 
-            for (let j = 0; j < weakToData.length; j++) {
+            for (let j = 0; j < doubleDmgFromArr.length; j++) {
                 //check for duplicates
-                if (!weaknesses.includes(weakToData[j].name)) {
-                    weaknesses.push(weakToData[j].name)
+                if (!weaknesses.includes(doubleDmgFromArr[j].name)) {
+                    weaknesses.push(doubleDmgFromArr[j].name)
                 }
             }
         }
+
+        //second set of loops to let 2nd array of types check against first for elimination of conflicting types
+        //ex. charizard being fire type makes him take double damage from ground but also is flying type which
+        //is immune to ground attacks
+        for (let i = 0; i < response.types.length; i++) {
+            const typesUrl = response.types[i].type.url //calling types url off pokemon api
+            const typesApiCall = await fetch(typesUrl)
+            const typesResponse = await typesApiCall.json()
+            const halfDmgFromArr =
+                typesResponse.damage_relations.half_damage_from
+            const noDmgFromArr = typesResponse.damage_relations.no_damage_from
+
+            for (let j = 0; j < halfDmgFromArr.length; j++) {
+                if (weaknesses.includes(halfDmgFromArr[j].name)) {
+                    const toBeRemoved = halfDmgFromArr[j].name
+                    weaknesses = weaknesses.filter((i) => i !== toBeRemoved)
+                }
+            }
+            for (let j = 0; j < noDmgFromArr.length; j++) {
+                if (weaknesses.includes(noDmgFromArr[j].name)) {
+                    const toBeRemoved = noDmgFromArr[j].name
+                    weaknesses = weaknesses.filter((i) => i !== toBeRemoved)
+                }
+            }
+        }
+
         this.setState({
             weakTo: weaknesses,
         })
