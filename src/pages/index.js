@@ -1,7 +1,11 @@
 import React from "react"
+import Modal from "react-modal"
+
+import "normalize.css"
 
 class App extends React.Component {
     state = {
+        modalIsOpen: false,
         pokemonName: undefined,
         pokemonId: undefined,
         pokemonDescription: undefined,
@@ -20,11 +24,24 @@ class App extends React.Component {
         },
     }
 
+    openModal = () => {
+        this.setState({
+            modalIsOpen: true,
+        })
+    }
+
+    closeModal = () => {
+        this.setState({
+            modalIsOpen: false,
+        })
+    }
+
     getData = (e) => {
         e.preventDefault()
 
         this.getPokemon(e)
         this.getPokemonSpecies(e)
+        this.openModal()
     }
 
     getPokemon = async (e) => {
@@ -176,40 +193,55 @@ class App extends React.Component {
                     <input type="text" name="pokemonName" />
                     <button>Get Pokemon</button>
                 </form>
-                <p>{this.state.pokemonName}</p>
-                <p>{this.state.pokemonId}</p>
-                <img
-                    src={this.state.pokemonSprite}
-                    alt={this.state.pokemonName}
-                />
-                <p>{this.state.pokemonDescription}</p>
-                <div>
-                    <h1>Types</h1>
-                    {this.state.pokemonTypes.map((i) => {
-                        return <p key={i.slot}>{i.type.name}</p>
-                    })}
-                    <h1>Weak To</h1>
-                    {this.state.weakTo.map((weakness) => {
-                        return <p>{weakness}</p>
-                    })}
-                </div>
-                <h1>Pokemon Stats</h1>
-                <p>Height: {this.state.pokemonStats.height}</p>
-                <p>Weight: {this.state.pokemonStats.weight}</p>
-                <p>Habitat: {this.state.pokemonStats.habitat}</p>
-                <p>Strongest Stat: {this.state.pokemonStats.strongestStat}</p>
-                <div>
-                    <h1>Evolutions</h1>
-                    {this.state.evolutionChain.firstPoke && (
-                        <p>first: {this.state.evolutionChain.firstPoke}</p>
-                    )}
-                    {this.state.evolutionChain.secondPoke && (
-                        <p>second: {this.state.evolutionChain.secondPoke}</p>
-                    )}
-                    {this.state.evolutionChain.thirdPoke && (
-                        <p>third: {this.state.evolutionChain.thirdPoke}</p>
-                    )}
-                </div>
+
+                <Modal isOpen={this.state.modalIsOpen}>
+                    <div>
+                        <p>{this.state.pokemonName}</p>
+                        <p>{this.state.pokemonId}</p>
+                        <img
+                            src={this.state.pokemonSprite}
+                            alt={this.state.pokemonName}
+                        />
+                        <p>{this.state.pokemonDescription}</p>
+                        <div>
+                            <h1>Types</h1>
+                            {this.state.pokemonTypes.map((i) => {
+                                return <p key={i.slot}>{i.type.name}</p>
+                            })}
+                            <h1>Weak To</h1>
+                            {this.state.weakTo.map((weakness) => {
+                                return <p>{weakness}</p>
+                            })}
+                        </div>
+                        <h1>Pokemon Stats</h1>
+                        <p>Height: {this.state.pokemonStats.height}</p>
+                        <p>Weight: {this.state.pokemonStats.weight}</p>
+                        <p>Habitat: {this.state.pokemonStats.habitat}</p>
+                        <p>
+                            Strongest Stat:{" "}
+                            {this.state.pokemonStats.strongestStat}
+                        </p>
+                        <div>
+                            <h1>Evolutions</h1>
+                            {this.state.evolutionChain.firstPoke && (
+                                <p>
+                                    first: {this.state.evolutionChain.firstPoke}
+                                </p>
+                            )}
+                            {this.state.evolutionChain.secondPoke && (
+                                <p>
+                                    second:{" "}
+                                    {this.state.evolutionChain.secondPoke}
+                                </p>
+                            )}
+                            {this.state.evolutionChain.thirdPoke && (
+                                <p>
+                                    third: {this.state.evolutionChain.thirdPoke}
+                                </p>
+                            )}
+                        </div>
+                    </div>
+                </Modal>
             </div>
         )
     }
