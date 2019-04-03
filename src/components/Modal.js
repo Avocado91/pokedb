@@ -1,7 +1,8 @@
 import React from "react"
 
 const Modal = (props) => (
-    <div>
+    <div className="modal">
+        <button onClick={props.handleCloseModal}>X</button>
         <div>
             <p>Previous Name: {props.state.previousPokemonName}</p>
             <p>Previous Id: {props.state.previousPokemonId}</p>

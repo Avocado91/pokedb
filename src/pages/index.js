@@ -3,6 +3,7 @@ import ModalContainer from "react-modal"
 import Modal from "../components/Modal"
 
 import "normalize.css"
+import "../css/components/Modal.css"
 
 class App extends React.Component {
     state = {
@@ -200,9 +201,14 @@ class App extends React.Component {
                     <input type="text" name="pokemonName" />
                     <button>Get Pokemon</button>
                 </form>
-
-                <ModalContainer isOpen={this.state.modalIsOpen}>
-                    <Modal state={this.state} />
+                <ModalContainer
+                    isOpen={this.state.modalIsOpen}
+                    onRequestClose={this.closeModal}
+                >
+                    <Modal
+                        state={this.state}
+                        handleCloseModal={this.closeModal}
+                    />
                 </ModalContainer>
             </div>
         )
@@ -210,5 +216,3 @@ class App extends React.Component {
 }
 
 export default App
-
-//test
