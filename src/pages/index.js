@@ -1,5 +1,6 @@
 import React from "react"
-import Modal from "react-modal"
+import ModalContainer from "react-modal"
+import Modal from "../components/Modal"
 
 import "normalize.css"
 
@@ -200,43 +201,9 @@ class App extends React.Component {
                     <button>Get Pokemon</button>
                 </form>
 
-                <Modal isOpen={this.state.modalIsOpen}>
-                    <div>
-                        <div>
-                            <p>
-                                Previous Name: {this.state.previousPokemonName}
-                            </p>
-                            <p>Previous Id: {this.state.previousPokemonId}</p>
-                            <p>Next Name: {this.state.nextPokemonName}</p>
-                            <p>Next Id: {this.state.nextPokemonId}</p>
-                        </div>
-                        <p>{this.state.pokemonName}</p>
-                        <p>{this.state.pokemonId}</p>
-                        <img
-                            src={this.state.pokemonSprite}
-                            alt={this.state.pokemonName}
-                        />
-                        <p>{this.state.pokemonDescription}</p>
-                        <div>
-                            <h1>Types</h1>
-                            {this.state.pokemonTypes.map((i) => {
-                                return <p key={i.slot}>{i.type.name}</p>
-                            })}
-                            <h1>Weak To</h1>
-                            {this.state.weakTo.map((weakness) => {
-                                return <p>{weakness}</p>
-                            })}
-                        </div>
-                        <h1>Pokemon Stats</h1>
-                        <p>Height: {this.state.pokemonStats.height}</p>
-                        <p>Weight: {this.state.pokemonStats.weight}</p>
-                        <p>Habitat: {this.state.pokemonStats.habitat}</p>
-                        <p>
-                            Strongest Stat:{" "}
-                            {this.state.pokemonStats.strongestStat}
-                        </p>
-                    </div>
-                </Modal>
+                <ModalContainer isOpen={this.state.modalIsOpen}>
+                    <Modal state={this.state} />
+                </ModalContainer>
             </div>
         )
     }
