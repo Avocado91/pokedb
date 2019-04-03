@@ -45,10 +45,10 @@ class App extends React.Component {
     //Pokemon Id's always contain at least 3 digits ex. 004
     minThreeDigits = (n) => {
         if (n < 10) {
-            return "00" + n
+            return "#00" + n
         } else if (n < 100) {
-            return "0" + n
-        } else return n
+            return "#0" + n
+        } else return "#" + n
     }
 
     getData = (e) => {
