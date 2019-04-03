@@ -8,6 +8,10 @@ class App extends React.Component {
         modalIsOpen: false,
         pokemonName: undefined,
         pokemonId: undefined,
+        previousPokemonName: undefined,
+        previousPokemonId: undefined,
+        nextPokemonName: undefined,
+        nextPokemonId: undefined,
         pokemonDescription: undefined,
         pokemonSprite: undefined,
         pokemonTypes: [],
@@ -34,6 +38,15 @@ class App extends React.Component {
         this.setState({
             modalIsOpen: false,
         })
+    }
+
+    //Pokemon Id's always contain at least 3 digits ex. 004
+    minThreeDigits = (n) => {
+        if (n < 10) {
+            return "00" + n
+        } else if (n < 100) {
+            return "0" + n
+        } else return n
     }
 
     getData = (e) => {
@@ -65,7 +78,7 @@ class App extends React.Component {
 
         this.setState((prevState) => ({
             pokemonName: response.name,
-            pokemonId: response.id,
+            pokemonId: this.minThreeDigits(response.id),
             pokemonSprite: response.sprites.front_default,
             pokemonTypes: response.types,
             pokemonStats: {
@@ -120,6 +133,35 @@ class App extends React.Component {
         this.setState({
             weakTo: weaknesses,
         })
+
+        const previousPokeId = response.id - 1
+        if (previousPokeId < 1) {
+            this.setState({
+                previousPokemonId: undefined,
+                previousPokemonName: undefined,
+            })
+        } else {
+            const PreviousApiCall = await fetch(
+                `https://pokeapi.co/api/v2/pokemon/${previousPokeId}`
+            )
+            const previousResponse = await PreviousApiCall.json()
+
+            this.setState({
+                previousPokemonId: this.minThreeDigits(previousResponse.id),
+                previousPokemonName: previousResponse.name,
+            })
+        }
+
+        const nextPokeId = response.id + 1
+        const nextApiCall = await fetch(
+            `https://pokeapi.co/api/v2/pokemon/${nextPokeId}`
+        )
+        const nextResponse = await nextApiCall.json()
+
+        this.setState({
+            nextPokemonId: this.minThreeDigits(nextResponse.id),
+            nextPokemonName: nextResponse.name,
+        })
     }
 
     getPokemonSpecies = async (e) => {
@@ -147,42 +189,6 @@ class App extends React.Component {
                 strongestStat: prevState.pokemonStats.strongestStat,
             },
         }))
-
-        const evolutionChainUrl = response.evolution_chain.url
-        const evolutionApiCall = await fetch(evolutionChainUrl)
-        const evolutionResponse = await evolutionApiCall.json()
-
-        if (evolutionResponse.chain.evolves_to.length < 1) {
-            this.setState({
-                evolutionChain: {
-                    firstPoke: evolutionResponse.chain.species.name,
-                    secondPoke: undefined,
-                    thirdPoke: undefined,
-                },
-            })
-        } else if (
-            evolutionResponse.chain.evolves_to[0].evolves_to.length < 1
-        ) {
-            this.setState({
-                evolutionChain: {
-                    firstPoke: evolutionResponse.chain.species.name,
-                    secondPoke:
-                        evolutionResponse.chain.evolves_to[0].species.name,
-                    thirdPoke: undefined,
-                },
-            })
-        } else {
-            this.setState({
-                evolutionChain: {
-                    firstPoke: evolutionResponse.chain.species.name,
-                    secondPoke:
-                        evolutionResponse.chain.evolves_to[0].species.name,
-                    thirdPoke:
-                        evolutionResponse.chain.evolves_to[0].evolves_to[0]
-                            .species.name,
-                },
-            })
-        }
     }
 
     render() {
@@ -196,6 +202,14 @@ class App extends React.Component {
 
                 <Modal isOpen={this.state.modalIsOpen}>
                     <div>
+                        <div>
+                            <p>
+                                Previous Name: {this.state.previousPokemonName}
+                            </p>
+                            <p>Previous Id: {this.state.previousPokemonId}</p>
+                            <p>Next Name: {this.state.nextPokemonName}</p>
+                            <p>Next Id: {this.state.nextPokemonId}</p>
+                        </div>
                         <p>{this.state.pokemonName}</p>
                         <p>{this.state.pokemonId}</p>
                         <img
@@ -221,25 +235,6 @@ class App extends React.Component {
                             Strongest Stat:{" "}
                             {this.state.pokemonStats.strongestStat}
                         </p>
-                        <div>
-                            <h1>Evolutions</h1>
-                            {this.state.evolutionChain.firstPoke && (
-                                <p>
-                                    first: {this.state.evolutionChain.firstPoke}
-                                </p>
-                            )}
-                            {this.state.evolutionChain.secondPoke && (
-                                <p>
-                                    second:{" "}
-                                    {this.state.evolutionChain.secondPoke}
-                                </p>
-                            )}
-                            {this.state.evolutionChain.thirdPoke && (
-                                <p>
-                                    third: {this.state.evolutionChain.thirdPoke}
-                                </p>
-                            )}
-                        </div>
                     </div>
                 </Modal>
             </div>
