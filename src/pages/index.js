@@ -3,7 +3,7 @@ import ModalContainer from "react-modal"
 import Modal from "../components/Modal"
 
 import "normalize.css"
-import "../css/components/Modal.css"
+import "../styles/styles.scss"
 
 class App extends React.Component {
     state = {
