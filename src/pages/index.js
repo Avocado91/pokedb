@@ -206,21 +206,19 @@ class App extends React.Component {
                         />
                     </div>
                 </div>
-                <div className="landing-page__overlay">
-                    <h1>Pokemon</h1>
-                    <form onSubmit={this.getData}>
-                        <input type="text" name="pokemonName" />
-                        <button>Get Pokemon</button>
-                    </form>
-                    <ModalContainer
-                        isOpen={this.state.modalIsOpen}
-                        onRequestClose={this.closeModal}
-                    >
-                        <Modal
-                            state={this.state}
-                            handleCloseModal={this.closeModal}
-                        />
-                    </ModalContainer>
+                <div className="landing-page__background">
+                    <div className="landing-page__overlay">
+                        <div className="text-container">
+                            <h1>
+                                Please enter the name of the Pokemon you would
+                                like to search for...
+                            </h1>
+                            <form onSubmit={this.getData}>
+                                <input type="text" name="pokemonName" />
+                                <button>Get Pokemon</button>
+                            </form>
+                        </div>
+                    </div>
                 </div>
                 <div className="footer">
                     <div className="wrapper wrapper--footer">
@@ -233,12 +231,22 @@ class App extends React.Component {
                                 className="footer__api-link"
                                 href="https://pokeapi.co/"
                                 target="_blank"
+                                rel="noopener noreferrer"
                             >
                                 PokeAPI
                             </a>
                         </p>
                     </div>
                 </div>
+                <ModalContainer
+                    isOpen={this.state.modalIsOpen}
+                    onRequestClose={this.closeModal}
+                >
+                    <Modal
+                        state={this.state}
+                        handleCloseModal={this.closeModal}
+                    />
+                </ModalContainer>
             </div>
         )
     }

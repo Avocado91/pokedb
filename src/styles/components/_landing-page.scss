@@ -1,16 +1,17 @@
 .landing-page {
-  height: 100vh;
+  color: white;
+}
+
+.landing-page__background {
+  height: -webkit-calc(100vh - 157px); //height of the footer
+  height: -moz-calc(100vh - 157px);
+  height: calc(100vh - 157px);
   background-image: url("../images/pokemonBkg.jpg");
-  background-repeat: no-repeat;
   background-size: cover;
+  background-position: bottom;
 }
 
 .landing-page__overlay {
+  height: 100%;
   background-color: rgba(0, 44, 114, 0.85);
-  height: 100vh;
-}
-
-.landing-page h1 {
-  padding: 0;
-  margin: 0;
 }
