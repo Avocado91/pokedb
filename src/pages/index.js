@@ -1,6 +1,7 @@
 import React from "react"
 import ModalContainer from "react-modal"
 import Modal from "../components/Modal"
+import PokedbLogo from "../images/pokedb-logo.png"
 
 import "normalize.css"
 import "../styles/styles.scss"
@@ -195,21 +196,33 @@ class App extends React.Component {
 
     render() {
         return (
-            <div>
-                <h1>Pokemon</h1>
-                <form onSubmit={this.getData}>
-                    <input type="text" name="pokemonName" />
-                    <button>Get Pokemon</button>
-                </form>
-                <ModalContainer
-                    isOpen={this.state.modalIsOpen}
-                    onRequestClose={this.closeModal}
-                >
-                    <Modal
-                        state={this.state}
-                        handleCloseModal={this.closeModal}
-                    />
-                </ModalContainer>
+            <div className="landing-page">
+                <div className="header">
+                    <img src={PokedbLogo} alt="Poke.db logo" />
+                </div>
+                <div className="landing-page__overlay">
+                    <h1>Pokemon</h1>
+                    <form onSubmit={this.getData}>
+                        <input type="text" name="pokemonName" />
+                        <button>Get Pokemon</button>
+                    </form>
+                    <ModalContainer
+                        isOpen={this.state.modalIsOpen}
+                        onRequestClose={this.closeModal}
+                    >
+                        <Modal
+                            state={this.state}
+                            handleCloseModal={this.closeModal}
+                        />
+                    </ModalContainer>
+                </div>
+                <div className="footer">
+                    <p>
+                        Powered by our friends over at{" "}
+                        <a href="https://pokeapi.co/">PokeAPI</a>
+                    </p>
+                    <p>T.J. Ruggles &copy; 2019 </p>
+                </div>
             </div>
         )
     }
