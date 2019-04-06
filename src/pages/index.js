@@ -198,7 +198,11 @@ class App extends React.Component {
         return (
             <div className="landing-page">
                 <div className="header">
-                    <img src={PokedbLogo} alt="Poke.db logo" />
+                    <img
+                        className="header__logo"
+                        src={PokedbLogo}
+                        alt="Poke.db logo"
+                    />
                 </div>
                 <div className="landing-page__overlay">
                     <h1>Pokemon</h1>
