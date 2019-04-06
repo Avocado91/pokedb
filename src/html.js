@@ -12,7 +12,7 @@ export default function HTML(props) {
                     content="width=device-width, initial-scale=1, shrink-to-fit=no"
                 />
                 <link
-                    href="https://fonts.googleapis.com/css?family=Roboto:300,400"
+                    href="https://fonts.googleapis.com/css?family=Roboto:200,300"
                     rel="stylesheet"
                 />
                 {props.headComponents}

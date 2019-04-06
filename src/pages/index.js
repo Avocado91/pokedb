@@ -209,13 +209,18 @@ class App extends React.Component {
                 <div className="landing-page__background">
                     <div className="landing-page__overlay">
                         <div className="text-container">
-                            <h1>
-                                Please enter the name of the Pokemon you would
-                                like to search for...
+                            <h1 className="text-container__title">
+                                Enter the name of the Pokemon you would like to
+                                search for...
                             </h1>
                             <form onSubmit={this.getData}>
-                                <input type="text" name="pokemonName" />
-                                <button>Get Pokemon</button>
+                                <input
+                                    className="text-container__input"
+                                    type="text"
+                                    name="pokemonName"
+                                    placeholder="ex. Pikachu"
+                                />
+                                <button className="button">Search</button>
                             </form>
                         </div>
                     </div>
