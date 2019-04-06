@@ -198,11 +198,13 @@ class App extends React.Component {
         return (
             <div className="landing-page">
                 <div className="header">
-                    <img
-                        className="header__logo"
-                        src={PokedbLogo}
-                        alt="Poke.db logo"
-                    />
+                    <div className="wrapper">
+                        <img
+                            className="header__logo"
+                            src={PokedbLogo}
+                            alt="Poke.db logo"
+                        />
+                    </div>
                 </div>
                 <div className="landing-page__overlay">
                     <h1>Pokemon</h1>
@@ -221,11 +223,21 @@ class App extends React.Component {
                     </ModalContainer>
                 </div>
                 <div className="footer">
-                    <p>
-                        Powered by our friends over at{" "}
-                        <a href="https://pokeapi.co/">PokeAPI</a>
-                    </p>
-                    <p>T.J. Ruggles &copy; 2019 </p>
+                    <div className="wrapper wrapper--footer">
+                        <p className="footer__copyright-text">
+                            T.J. Ruggles &copy; 2019{" "}
+                        </p>
+                        <p className="footer__api-text">
+                            Powered by our friends over at{" "}
+                            <a
+                                className="footer__api-link"
+                                href="https://pokeapi.co/"
+                                target="_blank"
+                            >
+                                PokeAPI
+                            </a>
+                        </p>
+                    </div>
                 </div>
             </div>
         )
