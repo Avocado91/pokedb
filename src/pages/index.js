@@ -246,6 +246,8 @@ class App extends React.Component {
                 <ModalContainer
                     isOpen={this.state.modalIsOpen}
                     onRequestClose={this.closeModal}
+                    className="modal__container"
+                    overlayClassName="modal__overlay"
                 >
                     <Modal
                         state={this.state}
