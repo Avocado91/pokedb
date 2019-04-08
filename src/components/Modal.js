@@ -2,14 +2,43 @@ import React from "react"
 
 const Modal = (props) => (
     <div className="modal">
-        <div className="wrapper--modal">
+        {/*
             <button onClick={props.handleCloseModal}>X</button>
-            <div>
-                <p>Previous Name: {props.state.previousPokemonName}</p>
-                <p>Previous Id: {props.state.previousPokemonId}</p>
-                <p>Next Name: {props.state.nextPokemonName}</p>
-                <p>Next Id: {props.state.nextPokemonId}</p>
+        */}
+        <div className="new-pokemon__container">
+            <div className="new-pokemon new-pokemon--prev">
+                <div className="wrapper--modal">
+                    <div className="new-pokemon__text-container">
+                        <p className="new-pokemon__icon">
+                            <i className="fas fa-chevron-circle-left" />
+                        </p>
+                        <p className="new-pokemon__id">
+                            {props.state.previousPokemonId}
+                        </p>
+                        <p className="new-pokemon__name">
+                            {props.state.previousPokemonName}
+                        </p>
+                    </div>
+                </div>
             </div>
+
+            <div className="new-pokemon new-pokemon--next">
+                <div className="wrapper--modal">
+                    <div className="new-pokemon__text-container new-pokemon__text-container--flex-rtl">
+                        <p className="new-pokemon__icon">
+                            <i className="fas fa-chevron-circle-right" />
+                        </p>
+                        <p className="new-pokemon__id">
+                            {props.state.nextPokemonId}
+                        </p>
+                        <p className="new-pokemon__name">
+                            {props.state.nextPokemonName}
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div className="wrapper--modal">
             <p>{props.state.pokemonName}</p>
             <p>{props.state.pokemonId}</p>
             <img
