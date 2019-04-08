@@ -21,7 +21,6 @@ const Modal = (props) => (
                     </div>
                 </div>
             </div>
-
             <div className="new-pokemon new-pokemon--next">
                 <div className="wrapper--modal">
                     <div className="new-pokemon__text-container new-pokemon__text-container--flex-rtl">
@@ -39,8 +38,10 @@ const Modal = (props) => (
             </div>
         </div>
         <div className="wrapper--modal">
-            <p>{props.state.pokemonName}</p>
-            <p>{props.state.pokemonId}</p>
+            <div className="modal__header">
+                <p className="modal__name">{props.state.pokemonName}</p>
+                <p className="modal__id">{props.state.pokemonId}</p>
+            </div>
             <img
                 src={props.state.pokemonSprite}
                 alt={props.state.pokemonName}
