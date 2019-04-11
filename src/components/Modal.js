@@ -2,9 +2,12 @@ import React from "react"
 
 const Modal = (props) => (
     <div className="modal">
-        {/*
-            <button onClick={props.handleCloseModal}>X</button>
-        */}
+        <button
+            className="button button--close-modal"
+            onClick={props.handleCloseModal}
+        >
+            <i className="fas fa-times" />
+        </button>
         <div className="new-pokemon__container">
             <div className="new-pokemon new-pokemon--prev">
                 <div className="wrapper--modal">
