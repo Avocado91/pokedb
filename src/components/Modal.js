@@ -45,11 +45,43 @@ const Modal = (props) => (
                 <p className="modal__name">{props.state.pokemonName}</p>
                 <p className="modal__id">{props.state.pokemonId}</p>
             </div>
-            <img
-                src={props.state.pokemonSprite}
-                alt={props.state.pokemonName}
-            />
-            <p>{props.state.pokemonDescription}</p>
+            <div className="layout--two-column">
+                <div className="modal__img-container">
+                    <img
+                        className="modal__img"
+                        src={props.state.pokemonSprite}
+                        alt={props.state.pokemonName}
+                    />
+                </div>
+
+                <div className="modal__text-container">
+                    <p className="modal__flavor-text">
+                        {props.state.pokemonDescription}
+                    </p>
+                    <div className="stats">
+                        <div className="wrapper--modal wrapper--stats">
+                            <div className="stats__stat-container">
+                                <p className="stats__stat-name">Height</p>
+                                <p>{props.state.pokemonStats.height}</p>
+                            </div>
+                            <div className="stats__stat-container">
+                                <p className="stats__stat-name">Weight</p>
+                                <p>{props.state.pokemonStats.weight}</p>
+                            </div>
+                            <div className="stats__stat-container">
+                                <p className="stats__stat-name">Habitat</p>
+                                <p>{props.state.pokemonStats.habitat}</p>
+                            </div>
+                            <div className="stats__stat-container">
+                                <p className="stats__stat-name">
+                                    Strongest Stat
+                                </p>
+                                <p>{props.state.pokemonStats.strongestStat}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
             <div>
                 <h1>Types</h1>
                 {props.state.pokemonTypes.map((i) => {
@@ -60,11 +92,6 @@ const Modal = (props) => (
                     return <p>{weakness}</p>
                 })}
             </div>
-            <h1>Pokemon Stats</h1>
-            <p>Height: {props.state.pokemonStats.height}</p>
-            <p>Weight: {props.state.pokemonStats.weight}</p>
-            <p>Habitat: {props.state.pokemonStats.habitat}</p>
-            <p>Strongest Stat: {props.state.pokemonStats.strongestStat}</p>
         </div>
     </div>
 )

@@ -1,0 +1,23 @@
+.stats {
+  background: rgb(38, 75, 135);
+  border-radius: 10px;
+  padding: 20px 0;
+  margin-top: 20px;
+  color: white;
+  font-size: 2rem;
+  line-height: 1.5;
+}
+
+.stats__stat-container {
+  margin: 10px 0;
+  width: 50%;
+  text-align: center;
+}
+
+.stats__stat-container p {
+  margin: 0;
+}
+
+.stats__stat-name {
+  color: rgb(212, 65, 71);
+}

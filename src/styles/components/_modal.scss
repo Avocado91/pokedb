@@ -11,6 +11,7 @@
   width: 800px;
   margin: auto;
   background: white;
+  color: #333;
 }
 
 .modal__container:focus {
@@ -33,4 +34,29 @@
 
 .modal__id {
   color: rgb(212, 65, 71);
+}
+
+.modal__img-container {
+  background: #f3f3f3;
+  flex: 2;
+  position: relative;
+  border-radius: 10px;
+}
+
+.modal__img {
+  width: 100%;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.modal__text-container {
+  flex: 3;
+  font-size: 1.8rem;
+  margin-left: 20px;
+}
+
+.modal__flavor-text {
+  margin: 0;
+  line-height: 1.5;
 }
