@@ -62,21 +62,29 @@ const Modal = (props) => (
                         <div className="wrapper--modal wrapper--stats">
                             <div className="stats__stat-container">
                                 <p className="stats__stat-name">Height</p>
-                                <p>{props.state.pokemonStats.height}</p>
+                                <p className="stats__stat-value">
+                                    {props.state.pokemonStats.height}
+                                </p>
                             </div>
                             <div className="stats__stat-container">
                                 <p className="stats__stat-name">Weight</p>
-                                <p>{props.state.pokemonStats.weight}</p>
+                                <p className="stats__stat-value">
+                                    {props.state.pokemonStats.weight}
+                                </p>
                             </div>
                             <div className="stats__stat-container">
                                 <p className="stats__stat-name">Habitat</p>
-                                <p>{props.state.pokemonStats.habitat}</p>
+                                <p className="stats__stat-value">
+                                    {props.state.pokemonStats.habitat}
+                                </p>
                             </div>
                             <div className="stats__stat-container">
                                 <p className="stats__stat-name">
                                     Strongest Stat
                                 </p>
-                                <p>{props.state.pokemonStats.strongestStat}</p>
+                                <p className="stats__stat-value">
+                                    {props.state.pokemonStats.strongestStat}
+                                </p>
                             </div>
                         </div>
                     </div>

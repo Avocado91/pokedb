@@ -227,8 +227,10 @@ class App extends React.Component {
                 </div>
                 <div className="footer">
                     <div className="wrapper wrapper--footer">
-                        <p className="footer__copyright-text">
-                            T.J. Ruggles &copy; 2019{" "}
+                        <p className="footer__disclaimer">
+                            The Pokemon name, trademark, assets and franchise
+                            are all Copyright to Nintendo, Pokemon, and Game
+                            Freak inc. | Poke.db - &copy;2019
                         </p>
                         <p className="footer__api-text">
                             Powered by our friends over at{" "}
