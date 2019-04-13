@@ -1,0 +1,241 @@
+.type {
+  flex: 1;
+  margin-top: 30px;
+}
+
+.type__container {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.type__background {
+  border-radius: 8px;
+  padding: 8px;
+  width: 100px;
+  margin-right: 10px;
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+.type__background--bug {
+  background: #aebe30;
+  background: -moz-linear-gradient(top, #aebe30 0%, #88950b 50%, #aebe30 100%);
+  background: -webkit-linear-gradient(
+    top,
+    #aebe30 0%,
+    #88950b 50%,
+    #aebe30 100%
+  );
+  background: linear-gradient(to bottom, #aebe30 0%, #88950b 50%, #aebe30 100%);
+}
+
+.type__background--dark {
+  background: #543d30;
+  background: -moz-linear-gradient(top, #543d30 0%, #35271e 50%, #543d30 100%);
+  background: -webkit-linear-gradient(
+    top,
+    #543d30 0%,
+    #35271e 50%,
+    #543d30 100%
+  );
+  background: linear-gradient(to bottom, #543d30 0%, #35271e 50%, #543d30 100%);
+}
+
+.type__background--dragon {
+  background: #7e6ade;
+  background: -moz-linear-gradient(top, #7e6ade 0%, #4f3e99 50%, #7f6ade 100%);
+  background: -webkit-linear-gradient(
+    top,
+    #7e6ade 0%,
+    #4f3e99 50%,
+    #7f6ade 100%
+  );
+  background: linear-gradient(to bottom, #7e6ade 0%, #4f3e99 50%, #7f6ade 100%);
+}
+
+.type__background--electric {
+  background: #fabf2e;
+  background: -moz-linear-gradient(top, #fabf2e 0%, #e69203 50%, #fabf2e 100%);
+  background: -webkit-linear-gradient(
+    top,
+    #fabf2e 0%,
+    #e69203 50%,
+    #fabf2e 100%
+  );
+  background: linear-gradient(to bottom, #fabf2e 0%, #e69203 50%, #fabf2e 100%);
+}
+
+.type__background--fairy {
+  background: #f4b8f4;
+  background: -moz-linear-gradient(top, #f4b8f4 0%, #dd95db 50%, #f4b8f4 100%);
+  background: -webkit-linear-gradient(
+    top,
+    #f4b8f4 0%,
+    #dd95db 50%,
+    #f4b8f4 100%
+  );
+  background: linear-gradient(to bottom, #f4b8f4 0%, #dd95db 50%, #f4b8f4 100%);
+}
+
+.type__background--fighting {
+  background: #843d29;
+  background: -moz-linear-gradient(top, #843d29 0%, #5b2718 50%, #843d29 100%);
+  background: -webkit-linear-gradient(
+    top,
+    #843d29 0%,
+    #5b2718 50%,
+    #843d29 100%
+  );
+  background: linear-gradient(to bottom, #843d29 0%, #5b2718 50%, #843d29 100%);
+}
+
+.type__background--fire {
+  background: #ea4e21;
+  background: -moz-linear-gradient(top, #ea4e21 0%, #c42204 50%, #ea4e21 100%);
+  background: -webkit-linear-gradient(
+    top,
+    #ea4e21 0%,
+    #c42204 50%,
+    #ea4e21 100%
+  );
+  background: linear-gradient(to bottom, #ea4e21 0%, #c42204 50%, #ea4e21 100%);
+}
+
+.type__background--flying {
+  background: #a3b2f1;
+  background: -moz-linear-gradient(top, #a3b2f1 0%, #5e75d4 50%, #a3b2f1 100%);
+  background: -webkit-linear-gradient(
+    top,
+    #a3b2f1 0%,
+    #5e75d4 50%,
+    #a3b2f1 100%
+  );
+  background: linear-gradient(to bottom, #a3b2f1 0%, #5e75d4 50%, #a3b2f1 100%);
+}
+
+.type__background--ghost {
+  background: #7272b2;
+  background: -moz-linear-gradient(top, #7272b2 0%, #3a3a68 50%, #7272b2 100%);
+  background: -webkit-linear-gradient(
+    top,
+    #7272b2 0%,
+    #3a3a68 50%,
+    #7272b2 100%
+  );
+  background: linear-gradient(to bottom, #7272b2 0%, #3a3a68 50%, #7272b2 100%);
+}
+
+.type__background--grass {
+  background: #80c548;
+  background: -moz-linear-gradient(top, #80c548 0%, #2d6b1f 50%, #80c548 100%);
+  background: -webkit-linear-gradient(
+    top,
+    #80c548 0%,
+    #2d6b1f 50%,
+    #80c548 100%
+  );
+  background: linear-gradient(to bottom, #80c548 0%, #2d6b1f 50%, #80c548 100%);
+}
+
+.type__background--ground {
+  background: #d3b763;
+  background: -moz-linear-gradient(top, #d3b763 0%, #a1843b 50%, #d3b763 100%);
+  background: -webkit-linear-gradient(
+    top,
+    #d3b763 0%,
+    #a1843b 50%,
+    #d3b763 100%
+  );
+  background: linear-gradient(to bottom, #d3b763 0%, #a1843b 50%, #d3b763 100%);
+}
+
+.type__background--ice {
+  background: #b5ebfd;
+  background: -moz-linear-gradient(top, #b5ebfd 0%, #6bd2f3 50%, #b5ebfd 100%);
+  background: -webkit-linear-gradient(
+    top,
+    #b5ebfd 0%,
+    #6bd2f3 50%,
+    #b5ebfd 100%
+  );
+  background: linear-gradient(to bottom, #b5ebfd 0%, #6bd2f3 50%, #b5ebfd 100%);
+}
+
+.type__background--normal {
+  background: #d2ccc9;
+  background: -moz-linear-gradient(top, #d2ccc9 0%, #817e75 50%, #d2ccc9 100%);
+  background: -webkit-linear-gradient(
+    top,
+    #d2ccc9 0%,
+    #817e75 50%,
+    #d2ccc9 100%
+  );
+  background: linear-gradient(to bottom, #d2ccc9 0%, #817e75 50%, #d2ccc9 100%);
+}
+
+.type__background--poison {
+  background: #9b599c;
+  background: -moz-linear-gradient(top, #9b599c 0%, #582a57 50%, #9b599c 100%);
+  background: -webkit-linear-gradient(
+    top,
+    #9b599c 0%,
+    #582a57 50%,
+    #9b599c 100%
+  );
+  background: linear-gradient(to bottom, #9b599c 0%, #582a57 50%, #9b599c 100%);
+}
+
+.type__background--psychic {
+  background: #e64e84;
+  background: -moz-linear-gradient(top, #e64e84 0%, #c73865 50%, #e64e84 100%);
+  background: -webkit-linear-gradient(
+    top,
+    #e64e84 0%,
+    #c73865 50%,
+    #e64e84 100%
+  );
+  background: linear-gradient(to bottom, #e64e84 0%, #c73865 50%, #e64e84 100%);
+}
+
+.type__background--rock {
+  background: #c4b076;
+  background: -moz-linear-gradient(top, #c4b076 0%, #98813f 50%, #c4b076 100%);
+  background: -webkit-linear-gradient(
+    top,
+    #c4b076 0%,
+    #98813f 50%,
+    #c4b076 100%
+  );
+  background: linear-gradient(to bottom, #c4b076 0%, #98813f 50%, #c4b076 100%);
+}
+
+.type__background--steel {
+  background: #e0dfe6;
+  background: -moz-linear-gradient(top, #e0dfe6 0%, #908e9e 50%, #e0dfe6 100%);
+  background: -webkit-linear-gradient(
+    top,
+    #e0dfe6 0%,
+    #908e9e 50%,
+    #e0dfe6 100%
+  );
+  background: linear-gradient(to bottom, #e0dfe6 0%, #908e9e 50%, #e0dfe6 100%);
+}
+
+.type__background--water {
+  background: #57a7f2;
+  background: -moz-linear-gradient(top, #57a7f2 0%, #1666b9 50%, #57a7f2 100%);
+  background: -webkit-linear-gradient(
+    top,
+    #57a7f2 0%,
+    #1666b9 50%,
+    #57a7f2 100%
+  );
+  background: linear-gradient(to bottom, #57a7f2 0%, #1666b9 50%, #57a7f2 100%);
+}
+
+.type__text {
+  color: #fff;
+  font-size: 1.6rem;
+  margin: 0;
+  text-transform: capitalize;
+}

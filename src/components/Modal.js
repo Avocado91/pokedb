@@ -90,15 +90,275 @@ const Modal = (props) => (
                     </div>
                 </div>
             </div>
-            <div>
-                <h1>Types</h1>
-                {props.state.pokemonTypes.map((i) => {
-                    return <p key={i.slot}>{i.type.name}</p>
-                })}
-                <h1>Weak To</h1>
-                {props.state.weakTo.map((weakness) => {
-                    return <p>{weakness}</p>
-                })}
+            <div className="layout--two-column">
+                <div className="type">
+                    <h1>Type</h1>
+                    <div className="type__container">
+                        {props.state.pokemonTypes.map((i) => {
+                            if (i.type.name === "bug") {
+                                return (
+                                    <div className="type__background type__background--bug">
+                                        <p className="type__text" key={i.slot}>
+                                            {i.type.name}
+                                        </p>
+                                    </div>
+                                )
+                            } else if (i.type.name === "dark") {
+                                return (
+                                    <div className="type__background type__background--dark">
+                                        <p className="type__text" key={i.slot}>
+                                            {i.type.name}
+                                        </p>
+                                    </div>
+                                )
+                            } else if (i.type.name === "dragon") {
+                                return (
+                                    <div className="type__background type__background--dragon">
+                                        <p className="type__text" key={i.slot}>
+                                            {i.type.name}
+                                        </p>
+                                    </div>
+                                )
+                            } else if (i.type.name === "electric") {
+                                return (
+                                    <div className="type__background type__background--electric">
+                                        <p className="type__text" key={i.slot}>
+                                            {i.type.name}
+                                        </p>
+                                    </div>
+                                )
+                            } else if (i.type.name === "fairy") {
+                                return (
+                                    <div className="type__background type__background--fairy">
+                                        <p className="type__text" key={i.slot}>
+                                            {i.type.name}
+                                        </p>
+                                    </div>
+                                )
+                            } else if (i.type.name === "fighting") {
+                                return (
+                                    <div className="type__background type__background--fighting">
+                                        <p className="type__text" key={i.slot}>
+                                            {i.type.name}
+                                        </p>
+                                    </div>
+                                )
+                            } else if (i.type.name === "fire") {
+                                return (
+                                    <div className="type__background type__background--fire">
+                                        <p className="type__text" key={i.slot}>
+                                            {i.type.name}
+                                        </p>
+                                    </div>
+                                )
+                            } else if (i.type.name === "flying") {
+                                return (
+                                    <div className="type__background type__background--flying">
+                                        <p className="type__text" key={i.slot}>
+                                            {i.type.name}
+                                        </p>
+                                    </div>
+                                )
+                            } else if (i.type.name === "ghost") {
+                                return (
+                                    <div className="type__background type__background--ghost">
+                                        <p className="type__text" key={i.slot}>
+                                            {i.type.name}
+                                        </p>
+                                    </div>
+                                )
+                            } else if (i.type.name === "grass") {
+                                return (
+                                    <div className="type__background type__background--grass">
+                                        <p className="type__text" key={i.slot}>
+                                            {i.type.name}
+                                        </p>
+                                    </div>
+                                )
+                            } else if (i.type.name === "ground") {
+                                return (
+                                    <div className="type__background type__background--ground">
+                                        <p className="type__text" key={i.slot}>
+                                            {i.type.name}
+                                        </p>
+                                    </div>
+                                )
+                            } else if (i.type.name === "ice") {
+                                return (
+                                    <div className="type__background type__background--ice">
+                                        <p className="type__text" key={i.slot}>
+                                            {i.type.name}
+                                        </p>
+                                    </div>
+                                )
+                            } else if (i.type.name === "normal") {
+                                return (
+                                    <div className="type__background type__background--normal">
+                                        <p className="type__text" key={i.slot}>
+                                            {i.type.name}
+                                        </p>
+                                    </div>
+                                )
+                            } else if (i.type.name === "poison") {
+                                return (
+                                    <div className="type__background type__background--poison">
+                                        <p className="type__text" key={i.slot}>
+                                            {i.type.name}
+                                        </p>
+                                    </div>
+                                )
+                            } else if (i.type.name === "psychic") {
+                                return (
+                                    <div className="type__background type__background--psychic">
+                                        <p className="type__text" key={i.slot}>
+                                            {i.type.name}
+                                        </p>
+                                    </div>
+                                )
+                            } else if (i.type.name === "rock") {
+                                return (
+                                    <div className="type__background type__background--rock">
+                                        <p className="type__text" key={i.slot}>
+                                            {i.type.name}
+                                        </p>
+                                    </div>
+                                )
+                            } else if (i.type.name === "steel") {
+                                return (
+                                    <div className="type__background type__background--steel">
+                                        <p className="type__text" key={i.slot}>
+                                            {i.type.name}
+                                        </p>
+                                    </div>
+                                )
+                            } else if (i.type.name === "water") {
+                                return (
+                                    <div className="type__background type__background--water">
+                                        <p className="type__text" key={i.slot}>
+                                            {i.type.name}
+                                        </p>
+                                    </div>
+                                )
+                            }
+                        })}
+                    </div>
+                </div>
+                <div className="type">
+                    <h1>Weaknesses</h1>
+                    <div className="type__container">
+                        {props.state.weakTo.map((weakness) => {
+                            if (weakness === "bug") {
+                                return (
+                                    <div className="type__background type__background--bug">
+                                        <p className="type__text">{weakness}</p>
+                                    </div>
+                                )
+                            } else if (weakness === "dark") {
+                                return (
+                                    <div className="type__background type__background--dark">
+                                        <p className="type__text">{weakness}</p>
+                                    </div>
+                                )
+                            } else if (weakness === "dragon") {
+                                return (
+                                    <div className="type__background type__background--dragon">
+                                        <p className="type__text">{weakness}</p>
+                                    </div>
+                                )
+                            } else if (weakness === "electric") {
+                                return (
+                                    <div className="type__background type__background--electric">
+                                        <p className="type__text">{weakness}</p>
+                                    </div>
+                                )
+                            } else if (weakness === "fairy") {
+                                return (
+                                    <div className="type__background type__background--fairy">
+                                        <p className="type__text">{weakness}</p>
+                                    </div>
+                                )
+                            } else if (weakness === "fighting") {
+                                return (
+                                    <div className="type__background type__background--fighting">
+                                        <p className="type__text">{weakness}</p>
+                                    </div>
+                                )
+                            } else if (weakness === "fire") {
+                                return (
+                                    <div className="type__background type__background--fire">
+                                        <p className="type__text">{weakness}</p>
+                                    </div>
+                                )
+                            } else if (weakness === "flying") {
+                                return (
+                                    <div className="type__background type__background--flying">
+                                        <p className="type__text">{weakness}</p>
+                                    </div>
+                                )
+                            } else if (weakness === "ghost") {
+                                return (
+                                    <div className="type__background type__background--ghost">
+                                        <p className="type__text">{weakness}</p>
+                                    </div>
+                                )
+                            } else if (weakness === "grass") {
+                                return (
+                                    <div className="type__background type__background--grass">
+                                        <p className="type__text">{weakness}</p>
+                                    </div>
+                                )
+                            } else if (weakness === "ground") {
+                                return (
+                                    <div className="type__background type__background--ground">
+                                        <p className="type__text">{weakness}</p>
+                                    </div>
+                                )
+                            } else if (weakness === "ice") {
+                                return (
+                                    <div className="type__background type__background--ice">
+                                        <p className="type__text">{weakness}</p>
+                                    </div>
+                                )
+                            } else if (weakness === "normal") {
+                                return (
+                                    <div className="type__background type__background--normal">
+                                        <p className="type__text">{weakness}</p>
+                                    </div>
+                                )
+                            } else if (weakness === "poison") {
+                                return (
+                                    <div className="type__background type__background--poison">
+                                        <p className="type__text">{weakness}</p>
+                                    </div>
+                                )
+                            } else if (weakness === "psychic") {
+                                return (
+                                    <div className="type__background type__background--psychic">
+                                        <p className="type__text">{weakness}</p>
+                                    </div>
+                                )
+                            } else if (weakness === "rock") {
+                                return (
+                                    <div className="type__background type__background--rock">
+                                        <p className="type__text">{weakness}</p>
+                                    </div>
+                                )
+                            } else if (weakness === "steel") {
+                                return (
+                                    <div className="type__background type__background--steel">
+                                        <p className="type__text">{weakness}</p>
+                                    </div>
+                                )
+                            } else if (weakness === "water") {
+                                return (
+                                    <div className="type__background type__background--water">
+                                        <p className="type__text">{weakness}</p>
+                                    </div>
+                                )
+                            }
+                        })}
+                    </div>
+                </div>
             </div>
         </div>
     </div>
