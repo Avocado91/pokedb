@@ -24,11 +24,6 @@ class App extends React.Component {
             weight: undefined,
             habitat: undefined,
         },
-        evolutionChain: {
-            firstPoke: undefined,
-            secondPoke: undefined,
-            thirdPoke: undefined,
-        },
     }
 
     openModal = () => {
@@ -40,6 +35,21 @@ class App extends React.Component {
     closeModal = () => {
         this.setState({
             modalIsOpen: false,
+            pokemonName: undefined,
+            pokemonId: undefined,
+            previousPokemonName: undefined,
+            previousPokemonId: undefined,
+            nextPokemonName: undefined,
+            nextPokemonId: undefined,
+            pokemonDescription: undefined,
+            pokemonSprite: undefined,
+            pokemonTypes: [],
+            weakTo: [],
+            pokemonStats: {
+                height: undefined,
+                weight: undefined,
+                habitat: undefined,
+            },
         })
     }
 
@@ -61,7 +71,10 @@ class App extends React.Component {
     }
 
     getPokemon = async (e) => {
-        const pokemon = e.target.elements.pokemonName.value
+        let pokemon
+        this.state.previousPokemonName === undefined
+            ? (pokemon = e.target.elements.pokemonName.value)
+            : (pokemon = e.currentTarget.dataset.name) //for when user clicks prev/next pokemon link in modal
 
         const apiCall = await fetch(
             `https://pokeapi.co/api/v2/pokemon/${pokemon}`
@@ -168,7 +181,10 @@ class App extends React.Component {
     }
 
     getPokemonSpecies = async (e) => {
-        const pokemon = e.target.elements.pokemonName.value
+        let pokemon
+        this.state.previousPokemonName === undefined
+            ? (pokemon = e.target.elements.pokemonName.value)
+            : (pokemon = this.state.previousPokemonName)
 
         const apiCall = await fetch(
             `https://pokeapi.co/api/v2/pokemon-species/${pokemon}`
@@ -254,6 +270,7 @@ class App extends React.Component {
                     <Modal
                         state={this.state}
                         handleCloseModal={this.closeModal}
+                        handleGetData={this.getData}
                     />
                 </ModalContainer>
             </div>

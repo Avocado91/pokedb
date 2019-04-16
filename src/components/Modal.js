@@ -9,7 +9,11 @@ const Modal = (props) => (
             <i className="fas fa-times" />
         </button>
         <div className="new-pokemon__container">
-            <div className="new-pokemon new-pokemon--prev">
+            <button
+                className="new-pokemon new-pokemon--prev"
+                onClick={props.handleGetData}
+                data-name={props.state.previousPokemonName}
+            >
                 <div className="wrapper--modal">
                     <div className="new-pokemon__text-container">
                         <p className="new-pokemon__icon">
@@ -18,15 +22,20 @@ const Modal = (props) => (
                         <p className="new-pokemon__id">
                             {props.state.previousPokemonId}
                         </p>
-                        <p className="new-pokemon__name">
+                        <p className="new-pokemon__name" name="pokemon">
                             {props.state.previousPokemonName}
                         </p>
                     </div>
                 </div>
-            </div>
+            </button>
+
             <div className="new-pokemon new-pokemon--next">
                 <div className="wrapper--modal">
-                    <div className="new-pokemon__text-container new-pokemon__text-container--flex-rtl">
+                    <button
+                        className="new-pokemon__text-container new-pokemon__text-container--flex-rtl"
+                        onClick={props.handleGetData}
+                        data-name={props.state.nextPokemonName}
+                    >
                         <p className="new-pokemon__icon">
                             <i className="fas fa-chevron-circle-right" />
                         </p>
@@ -36,7 +45,7 @@ const Modal = (props) => (
                         <p className="new-pokemon__name">
                             {props.state.nextPokemonName}
                         </p>
-                    </div>
+                    </button>
                 </div>
             </div>
         </div>
