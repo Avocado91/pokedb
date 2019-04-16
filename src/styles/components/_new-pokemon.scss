@@ -7,6 +7,9 @@
   background: rgb(38, 75, 135);
   width: 49.8%;
   height: 90px;
+  cursor: pointer;
+  border: none;
+  padding: 0;
 }
 
 .new-pokemon--prev {
@@ -24,19 +27,29 @@
   font-size: 2rem;
   text-transform: capitalize;
   color: #fff;
+  position: absolute;
+  top: 0;
+  left: 20px;
 }
 
 .new-pokemon__text-container--flex-rtl {
   flex-direction: row-reverse;
+  right: 20px;
 }
 
 .new-pokemon__icon {
   margin: 15px 0;
   color: rgb(212, 65, 71);
+  transition: all 0.2s ease-out;
+}
+
+.new-pokemon:hover .new-pokemon__icon {
+  transform: scale(1.6);
+  color: rgb(212, 65, 71);
 }
 
 .new-pokemon__id {
-  margin: 15px 8px;
+  margin: 15px 10px;
   color: rgb(212, 65, 71);
 }
 

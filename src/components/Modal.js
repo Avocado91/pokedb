@@ -29,13 +29,13 @@ const Modal = (props) => (
                 </div>
             </button>
 
-            <div className="new-pokemon new-pokemon--next">
+            <button
+                className="new-pokemon new-pokemon--next"
+                onClick={props.handleGetData}
+                data-name={props.state.nextPokemonName}
+            >
                 <div className="wrapper--modal">
-                    <button
-                        className="new-pokemon__text-container new-pokemon__text-container--flex-rtl"
-                        onClick={props.handleGetData}
-                        data-name={props.state.nextPokemonName}
-                    >
+                    <div className="new-pokemon__text-container new-pokemon__text-container--flex-rtl">
                         <p className="new-pokemon__icon">
                             <i className="fas fa-chevron-circle-right" />
                         </p>
@@ -45,9 +45,9 @@ const Modal = (props) => (
                         <p className="new-pokemon__name">
                             {props.state.nextPokemonName}
                         </p>
-                    </button>
+                    </div>
                 </div>
-            </div>
+            </button>
         </div>
         <div className="wrapper--modal">
             <div className="modal__header">
