@@ -3,6 +3,12 @@
   margin-right: 150px;
 }
 
+.wrapper--header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
 .wrapper--footer {
   display: flex;
   justify-content: space-between;

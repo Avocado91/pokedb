@@ -214,12 +214,21 @@ class App extends React.Component {
         return (
             <div className="landing-page">
                 <div className="header">
-                    <div className="wrapper">
+                    <div className="wrapper wrapper--header">
                         <img
                             className="header__logo"
                             src={PokedbLogo}
                             alt="Poke.db logo"
                         />
+                        <a
+                            href="https://github.com/truggles85/pokedb"
+                            target="_blank"
+                        >
+                            <div className="header__source-container">
+                                <i className="fab fa-github-square header__source-icon" />
+                                <p className="header__source-text">Source</p>
+                            </div>
+                        </a>
                     </div>
                 </div>
                 <div className="landing-page__background">
