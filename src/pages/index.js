@@ -34,7 +34,11 @@ class App extends React.Component {
 
     closeModal = () => {
         this.setState({
-            modalIsOpen: false,
+            modalIsOpen: false
+        });
+
+        setTimeout(() => {
+            this.setState({
             pokemonName: undefined,
             pokemonId: undefined,
             previousPokemonName: undefined,
@@ -51,6 +55,7 @@ class App extends React.Component {
                 habitat: undefined,
             },
         })
+        }, 1000)
     }
 
     //Pokemon Id's always contain at least 3 digits ex. 004
@@ -271,6 +276,7 @@ class App extends React.Component {
                     </div>
                 </div>
                 <ModalContainer
+                    closeTimeoutMS={750}
                     isOpen={this.state.modalIsOpen}
                     onRequestClose={this.closeModal}
                     className="modal__container"
