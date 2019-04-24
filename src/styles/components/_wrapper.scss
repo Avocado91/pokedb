@@ -1,10 +1,22 @@
 .wrapper {
-  margin-left: 150px;
-  margin-right: 150px;
-
   @include phone-only {
     margin-left: 10px;
     margin-right: 10px;
+  }
+
+  @include tablet-portrait {
+    margin-left: 50px;
+    margin-right: 50px;
+  }
+
+  @include tablet-landscape {
+    margin-left: 100px;
+    margin-right: 100px;
+  }
+
+  @include desktop {
+    margin-left: 150px;
+    margin-right: 150px;
   }
 }
 
