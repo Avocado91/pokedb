@@ -8,6 +8,10 @@
   background: rgba(0, 0, 0, 0.4);
   border-radius: 20px;
   padding: 50px 20px;
+
+  @include phone-only {
+    width: auto;
+  }
 }
 
 .text-container__title {
