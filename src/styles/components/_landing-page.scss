@@ -5,6 +5,12 @@
   background-image: url("../images/pokemonBkg.jpg");
   background-size: cover;
   background-position: bottom;
+
+  @include phone-only {
+    height: -webkit-calc(100vh - 158px); //height of the footer
+    height: -moz-calc(100vh - 158px);
+    height: calc(100vh - 158px);
+  }
 }
 
 .landing-page__overlay {

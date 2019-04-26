@@ -33,6 +33,10 @@
 .wrapper--footer {
   display: flex;
   justify-content: space-between;
+
+  @include phone-only {
+    display: block;
+  }
 }
 
 .wrapper--modal {
