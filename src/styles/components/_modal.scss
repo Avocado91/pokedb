@@ -65,6 +65,10 @@
   flex: 1;
   position: relative;
   border-radius: 10px;
+
+  @include phone-only {
+    margin-bottom: 20px;
+  }
 }
 
 .modal__img {
@@ -72,6 +76,12 @@
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
+
+  @include phone-only {
+    position: static;
+    top: 0;
+    transform: none;
+  }
 }
 
 .modal__text-container {
