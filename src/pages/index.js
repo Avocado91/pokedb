@@ -34,27 +34,27 @@ class App extends React.Component {
 
     closeModal = () => {
         this.setState({
-            modalIsOpen: false
-        });
+            modalIsOpen: false,
+        })
 
         setTimeout(() => {
             this.setState({
-            pokemonName: undefined,
-            pokemonId: undefined,
-            previousPokemonName: undefined,
-            previousPokemonId: undefined,
-            nextPokemonName: undefined,
-            nextPokemonId: undefined,
-            pokemonDescription: undefined,
-            pokemonSprite: undefined,
-            pokemonTypes: [],
-            weakTo: [],
-            pokemonStats: {
-                height: undefined,
-                weight: undefined,
-                habitat: undefined,
-            },
-        })
+                pokemonName: undefined,
+                pokemonId: undefined,
+                previousPokemonName: undefined,
+                previousPokemonId: undefined,
+                nextPokemonName: undefined,
+                nextPokemonId: undefined,
+                pokemonDescription: undefined,
+                pokemonSprite: undefined,
+                pokemonTypes: [],
+                weakTo: [],
+                pokemonStats: {
+                    height: undefined,
+                    weight: undefined,
+                    habitat: undefined,
+                },
+            })
         }, 1000)
     }
 
@@ -78,7 +78,7 @@ class App extends React.Component {
     getPokemon = async (e) => {
         let pokemon
         this.state.previousPokemonName === undefined
-            ? (pokemon = e.target.elements.pokemonName.value)
+            ? (pokemon = e.target.elements.pokemonName.value.toLowerCase())
             : (pokemon = e.currentTarget.dataset.name) //for when user clicks prev/next pokemon link in modal
 
         const apiCall = await fetch(
@@ -188,7 +188,7 @@ class App extends React.Component {
     getPokemonSpecies = async (e) => {
         let pokemon
         this.state.previousPokemonName === undefined
-            ? (pokemon = e.target.elements.pokemonName.value)
+            ? (pokemon = e.target.elements.pokemonName.value.toLowerCase())
             : (pokemon = this.state.previousPokemonName)
 
         const apiCall = await fetch(
@@ -223,7 +223,7 @@ class App extends React.Component {
                         <img
                             className="header__logo"
                             src={PokedbLogo}
-                            alt="Poke.db logo"
+                            alt="Pokedb logo"
                         />
                         <a
                             href="https://github.com/truggles85/pokedb"
