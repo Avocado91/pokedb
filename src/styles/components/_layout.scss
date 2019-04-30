@@ -2,6 +2,14 @@
   display: flex;
 
   @include phone-only {
+    display: inline-block;
+  }
+}
+
+.layout--types {
+  display: flex;
+
+  @include phone-only {
     display: block;
   }
 }

@@ -99,7 +99,7 @@ const Modal = (props) => (
                     </div>
                 </div>
             </div>
-            <div className="layout--two-column">
+            <div className="layout--types">
                 <div className="type">
                     <h1>Type</h1>
                     <div className="type__container">

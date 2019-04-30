@@ -78,6 +78,10 @@
   flex: 1;
   font-size: 1.8rem;
   margin-left: 20px;
+
+  @include phone-only {
+    margin-left: 0;
+  }
 }
 
 .modal__flavor-text {
