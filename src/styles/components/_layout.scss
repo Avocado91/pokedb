@@ -1,3 +1,7 @@
 .layout--two-column {
   display: flex;
+
+  @include phone-only {
+    display: block;
+  }
 }
