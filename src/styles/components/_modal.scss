@@ -97,4 +97,8 @@
 .modal__flavor-text {
   margin: 0;
   line-height: 1.5;
+
+  @include phone-only {
+    text-align: center;
+  }
 }
