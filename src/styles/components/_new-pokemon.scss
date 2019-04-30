@@ -30,17 +30,30 @@
   position: absolute;
   top: 0;
   left: 20px;
+
+  @include phone-only {
+    left: 10px;
+    font-size: 1.6rem;
+  }
 }
 
 .new-pokemon__text-container--flex-rtl {
   flex-direction: row-reverse;
   right: 20px;
+
+  @include phone-only {
+    right: 10px;
+  }
 }
 
 .new-pokemon__icon {
   margin: 15px 0;
   color: rgb(212, 65, 71);
   transition: all 0.2s ease-out;
+
+  @include phone-only {
+    display: none;
+  }
 }
 
 .new-pokemon:hover .new-pokemon__icon {
@@ -49,10 +62,14 @@
 }
 
 .new-pokemon__id {
-  margin: 15px 10px;
+  margin: 19px 10px;
   color: rgb(212, 65, 71);
+
+  @include phone-only {
+    margin: 19px 5px;
+  }
 }
 
 .new-pokemon__name {
-  margin: 15px 0;
+  margin: 19px 0;
 }
