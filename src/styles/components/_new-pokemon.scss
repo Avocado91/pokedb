@@ -8,7 +8,7 @@
   width: 49.8%;
   height: 90px;
   cursor: pointer;
-  border: none;
+  border: 1px solid transparent;
   padding: 0;
 }
 
@@ -62,7 +62,7 @@
 }
 
 .new-pokemon__id {
-  margin: 19px 10px;
+  margin: 15px 10px;
   color: rgb(212, 65, 71);
 
   @include phone-only {
@@ -71,5 +71,9 @@
 }
 
 .new-pokemon__name {
-  margin: 19px 0;
+  margin: 15px 0;
+
+  @include phone-only {
+    margin: 19px 0;
+  }
 }
