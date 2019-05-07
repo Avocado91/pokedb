@@ -26,17 +26,17 @@
   left: 50%;
   transform: translateX(-50%);
   transform-origin: 300%;
-  transition: all 0.2s ease-out;
   top: 9px;
   width: auto;
   padding: 3px 8px;
   border-radius: 100%;
 }
 
-.button--close-modal:hover {
-  transform: scale(1.2);
+.button--close-modal:hover i {
+  transform: rotate(180deg);
 }
 
 .button--close-modal i {
   margin-top: 2px;
+  transition: all 0.3s ease-out;
 }

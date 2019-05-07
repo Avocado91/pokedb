@@ -21,6 +21,8 @@
 }
 
 .modal__container {
+  -webkit-backface-visibility: hidden;
+  -webkit-transform: translateZ(0) scale(1, 1);
   width: 700px;
   background: white;
   color: #333;

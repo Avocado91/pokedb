@@ -10,6 +10,8 @@
   cursor: pointer;
   border: 1px solid transparent;
   padding: 0;
+  -webkit-backface-visibility: hidden;
+  -webkit-transform: translateZ(0) scale(1, 1);
 }
 
 .new-pokemon--prev {
